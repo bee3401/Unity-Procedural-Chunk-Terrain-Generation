@@ -129,7 +129,7 @@ public class MapManager : MonoBehaviour
         {
             TerrainData leftNeighbor, rightNeighbor, bottomNeighbor, topNeighbor;
             
-            // Wait until all neighbors are generated
+            // Waits until all neighbors are generated
             do
             {
                 yield return new WaitForSeconds(0.1f);
@@ -141,7 +141,7 @@ public class MapManager : MonoBehaviour
 
             } while (leftNeighbor == null || rightNeighbor == null || bottomNeighbor == null || topNeighbor == null);
 
-            // Modify terrain heights based on neighbors
+            // Modifies terrain heights based on neighbors
             for (int x = 0; x < terrainData.heightmapWidth; x++)
             {
                 for (int y = 0; y < terrainData.heightmapHeight; y++)
@@ -193,16 +193,16 @@ public class MapManager : MonoBehaviour
 
             Texture2D texture = TextureGenerator.TextureFromColorMap(colorMap,new Vector2(width, height));
 
-            // Create a new terrain layer
+            // New terrain layer
             TerrainLayer terrainLayer = new TerrainLayer();
             terrainLayer.diffuseTexture = texture;
 
-            // Calculate tiling settings based on the terrain size and texture size
+            // Computes tiling settings based on the terrain size and texture size
             float tileX = texture.width;
             float tileZ = texture.height;
             terrainLayer.tileSize = new Vector2(tileX, tileZ);
 
-            // Assign the terrain layer to the terrain object
+            // Assigns the terrain layer to the terrain object
             terrainData.terrainLayers = new TerrainLayer[] { terrainLayer };
         }
 
